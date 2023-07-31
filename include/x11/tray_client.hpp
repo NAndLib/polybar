@@ -62,6 +62,10 @@ class client : public non_copyable_mixin, public non_movable_mixin {
 
   void update_bg() const;
 
+  friend bool operator<(const client& lhs, const client& rhs) {
+    return lhs.m_name < rhs.m_name;
+  }
+
  protected:
   void observe_background();
 

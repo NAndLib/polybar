@@ -429,6 +429,7 @@ void manager::process_docking_request(xcb_window_t win) {
     cl->notify_xembed();
 
     m_clients.emplace_back(std::move(cl));
+    std::sort(m_clients.begin(), m_clients.end());
   } catch (const std::exception& err) {
     m_log.err("tray: Failed to setup tray client '%s' (%s) removing... (%s)", ewmh_util::get_wm_name(win),
         m_connection.id(win), err.what());
