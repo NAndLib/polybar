@@ -12,7 +12,7 @@ depends=("libuv" "cairo" "xcb-util-image" "xcb-util-wm" "xcb-util-xrm"
          "xcb-util-cursor" "alsa-lib" "libpulse" "libmpdclient" "libnl"
          "jsoncpp" "curl")
 optdepends=("i3-wm: i3 module support")
-makedepends=("cmake" "git" "python" "pkg-config" "python-sphinx"
+makedepends=("cmake" "clang" "git" "python" "pkg-config" "python-sphinx"
              "python-packaging" "i3-wm")
 backup=("etc/polybar/config.ini")
 provides=("polybar")
@@ -32,7 +32,7 @@ prepare() {
 build() {
   cd "${_pkgname}/build" || exit 1
   # Force cmake to use system python (to detect xcbgen)
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=/usr/bin/python3 ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="clang++" -DPYTHON_EXECUTABLE=/usr/bin/python3 ..
   cmake --build .
 }
 
