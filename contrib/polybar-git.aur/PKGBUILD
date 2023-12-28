@@ -17,7 +17,7 @@ makedepends=("cmake" "git" "python" "pkg-config" "python-sphinx"
 backup=("etc/polybar/config.ini")
 provides=("polybar")
 conflicts=("polybar")
-source=("${_pkgname}::git+${url}.git")
+source=("${_pkgname}::git+file:///home/andrew_nt/code/polybar")
 sha256sums=("SKIP")
 
 pkgver() {
